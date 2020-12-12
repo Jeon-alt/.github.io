@@ -523,17 +523,17 @@
     //             });
     //         }
 
-            function remove_pokemon(id) {
-                db.collection('pokemon').doc(id).delete()
-                .then(function(docRef){
-                    location.reload();
-                })
-                .catch(function(error) {
-                    console.error("Error adding document: ", error);
-                    alert("Error in deleting Pokemon");
-                });
+            // function remove_pokemon(id) {
+            //     db.collection('pokemon').doc(id).delete()
+            //     .then(function(docRef){
+            //         location.reload();
+            //     })
+            //     .catch(function(error) {
+            //         console.error("Error adding document: ", error);
+            //         alert("Error in deleting Pokemon");
+            //     });
 
-            }
+            // }
 
 </script>
   </body>
