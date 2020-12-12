@@ -92,15 +92,15 @@
                             <form id="form_id" method="post" name="myform">
                             <label>Year and Name :</label>
                             <br>
-                            <input type="text"/>
+                            <input type="text" id="education_year_name" />
                             <br>
                             <label>Degree :</label>
                             <br>
-                            <input type="text"/>
+                            <input type="text" id="education_degree" />
                             <br>
                             <label>Duration :</label>
                             <br>
-                            <input type="text"/>
+                            <input type="text" id="education_duration" />
                             <input type="button" value="add" id="submit" onclick="add_education()"/>
 
                           <ol id="education" class="timeline">
@@ -454,7 +454,7 @@
         })
         .catch(function(error) {
             console.error("Error adding document: ", error);
-            alert("Error in adding Pokemon");
+            alert("Error in adding Education");
         });
     }
 
