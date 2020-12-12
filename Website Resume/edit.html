@@ -125,15 +125,15 @@
                           <form id="form_id" method="post" name="myform">
                             <label>Year and Name :</label>
                             <br>
-                            <input type="text"/>
+                            <input type="text" id="organization_year_name"/>
                             <br>
                             <label>Position :</label>
                             <br>
-                            <input type="text"/>
+                            <input type="text" id="organization_position" />
                             <br>
                             <label>Duration :</label>
                             <br>
-                            <input type="text"/>
+                            <input type="text" id="organization_duration"/>
                             <input type="button" value="add" id="submit" onclick="add_organization()"/>
                           <ol id="organization" class="timeline">
                             
@@ -458,27 +458,50 @@
         });
     }
 
-    function add_pokemon() {
-                console.log('inside app pokemon')
-                var pokemon_name = document.getElementById("pokemon_name").value;
-                var pokemon_type = document.getElementById("pokemon_type").value;
-                var pokemon_image_link = document.getElementById("pokemon_image_link").value;
+    function add_organization(){
+        console.log('inside website resume')
+        var organization_year_name = document.getElementById("organization_year_name").value;
+        var organization_position = document.getElementById("organization_position").value;
+        var organization_duration = document.getElementById("organization_duration").value;
+
+        
+        db.collection('organization').add({
+            year_name: organization_year_name,
+            position: organization_position,
+            duration: organization_duration
+        })
+        .then(function(docRef) {
+            console.log("Document written with ID: ", docRef.id);
+            location.reload();
+        })
+        .catch(function(error) {
+            console.error("Error adding document: ", error);
+            alert("Error in adding Organization");
+        });
+    }
+
+
+    // function add_pokemon() {
+    //             console.log('inside app pokemon')
+    //             var pokemon_name = document.getElementById("pokemon_name").value;
+    //             var pokemon_type = document.getElementById("pokemon_type").value;
+    //             var pokemon_image_link = document.getElementById("pokemon_image_link").value;
 
                 
-                db.collection('pokemon').add({
-                    name: pokemon_name,
-                    type: pokemon_type,
-                    image_link: pokemon_image_link
-                })
-                .then(function(docRef) {
-                    console.log("Document written with ID: ", docRef.id);
-                    location.reload();
-                })
-                .catch(function(error) {
-                    console.error("Error adding document: ", error);
-                    alert("Error in adding Pokemon");
-                });
-            }
+    //             db.collection('pokemon').add({
+    //                 name: pokemon_name,
+    //                 type: pokemon_type,
+    //                 image_link: pokemon_image_link
+    //             })
+    //             .then(function(docRef) {
+    //                 console.log("Document written with ID: ", docRef.id);
+    //                 location.reload();
+    //             })
+    //             .catch(function(error) {
+    //                 console.error("Error adding document: ", error);
+    //                 alert("Error in adding Pokemon");
+    //             });
+    //         }
 
             function remove_pokemon(id) {
                 db.collection('pokemon').doc(id).delete()
