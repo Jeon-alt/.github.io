@@ -155,11 +155,11 @@
                   <form id="form_id" method="post" name="myform">
                     <label>Work :</label>
                     <br>
-                    <input type="text"/>
+                    <input type="text" id="work"/>
                     <br>
                     <label>Description:</label>
                     <br>
-                    <input type="text"/>
+                    <input type="text" id="description"/>
                     <input type="button" value="add" id="submit" onclick="add_works()"/>
                   <div id="work-list" class="row">
 
@@ -477,6 +477,26 @@
         .catch(function(error) {
             console.error("Error adding document: ", error);
             alert("Error in adding Organization");
+        });
+    }
+
+    function add_works(){
+        console.log('inside website resume')
+        var work = document.getElementById("work").value;
+        var description = document.getElementById("description").value;
+
+        
+        db.collection('works').add({
+            work: work,
+            description: description
+        })
+        .then(function(docRef) {
+            console.log("Document written with ID: ", docRef.id);
+            location.reload();
+        })
+        .catch(function(error) {
+            console.error("Error adding document: ", error);
+            alert("Error in adding Works");
         });
     }
 
